@@ -78,15 +78,20 @@ h5 a:hover {
 }
 p.url-rendered{
   padding:10px;
+  background-color: #94CACC;
+  border-bottom: 2px solid #328F8F;
+  border-radius: 10px;
 }
 p.description-rendered{
-
+  border: 1px solid #328F8F;
+  border-radius: 10px;
 }
 .image-rendered{
   max-width: 200px;
   max-height: 200px;
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  padding: 10px;
 
 }
