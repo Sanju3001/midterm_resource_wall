@@ -6,9 +6,18 @@ module.exports = function makeURLDataHelpers(knex) {
 
     getURL: function(id, callback) {
       knex
-        .select("*")
-        .from("URLs")
-        .where('id', '=', id)
+        .select(
+          'URLs.id',
+          'URLs.URL',
+          'URLs.cat_id',
+          'URLs.Title',
+          'URLs.overallRating',
+          'URLs.user_id',
+          'URLs.Desc',
+          'categories.name as categoryname')
+        .from('URLs')
+        .innerJoin('categories', 'URLs.cat_id', 'categories.id')
+        .where('URLs.id', '=', id)
         .then((urls) => {
           return callback(null, urls)
         })
@@ -38,7 +47,7 @@ module.exports = function makeURLDataHelpers(knex) {
       .returning('id')
       .insert(url)
       .then((id) => {
-        return id
+        return callback(null, id)
       })
       .catch((err) => {
         return callback(err)

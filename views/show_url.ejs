@@ -17,23 +17,7 @@
     <main class="container" id="urlshow">
       <header id="urlheader">
         <h1 id="urlname"><p><%=url.Title %></p></h1>
-        <div id="categoryofurl">
-            <% if (url.cat_id === 1){%>
-            <div>Food</div>
-          <% } %>
-            <% if (url.cat_id === 2){%>
-            <div>Sports</div>
-          <% } %>
-            <% if (url.cat_id === 3){%>
-            <div>Entertainment</div>
-          <% } %>
-            <% if (url.cat_id === 4){%>
-            <div>Art</div>
-          <% } %>
-            <% if (url.cat_id === 5){%>
-            <div>Buisness</div>
-          <% } %>
-          </div>
+        <div id="categoryofurl"><%=url.categoryname%></div>
         <div>
         <h5 id="urlfull"><p><%=url.URL %></p></h5>
 

@@ -37,11 +37,9 @@
           <div class="form-group">
           <label for="exampleFormControlSelect1">Category</label>
           <select name="selectvcategory" class="form-control" id="exampleFormControlSelect1">
-            <option value="1">Food</option>
-            <option value="2">Sports</option>
-            <option value="3">Entertainment</option>
-            <option value="4">Art</option>
-            <option value="5">Business</option>
+            <%for (let i = 0; i < categories.length; i++) {%>
+              <option value="<%= categories[1].id%>"><%= categories[i].name%></option>
+            <%}%>
           </select>
           </div>
           <label for="exampleFormControlTextarea2">Add New</label>

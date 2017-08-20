@@ -7,19 +7,32 @@ module.exports = (userDataHelpers) => {
 
   // SHOW A SPECIFIC USER
   router.get('/:id', (req, res) => {
-    userDataHelpers.getUser('id', req.params.id, (err, user) => {
-      if (err) {
-        return res.send('Error while connecting to the database.')
-      }
-      else {
-        userDataHelpers.getUserURLs(user[0].id, (err, urls) => {
-          if (err) {
-            return res.send('Error while connecting to the database.')
-          }
-          res.render('profile', {'user': user[0], 'currentUser': req.currentUser})
-        })
-      }
-    })
+    console.log(req.currentUser.id, req.params.id)
+    if (req.currentUser.id == req.params.id){ // Do not use triple equal here
+      userDataHelpers.getUser('id', req.params.id, (err, user) => {
+        if (err) {
+          return res.send('Error while connecting to the database.')
+        }
+        else {
+          userDataHelpers.getCategories((err, categories) => {
+            if (err) {
+              return res.send('Error while connecting to the database.')
+            }
+            else {
+              userDataHelpers.getUserURLs(user[0].id, (err, urls) => {
+                if (err) {
+                  return res.send('Error while connecting to the database.')
+                }
+                res.render('profile', {'user': user[0], 'categories': categories, 'currentUser': req.currentUser})
+              })
+            }
+          })
+        }
+      })
+    }
+    else {
+      res.redirect('/urls')
+    }
   }),
 
 

@@ -6,7 +6,7 @@ const router         = express.Router()
 
 module.exports = (urlDataHelpers) => {
 
-  // SHOW ALL URLS
+  // SHOW ALL URLS (VISITORS CAN ACCESS THIS PAGE)
   router.get('/', (req, res) => {
     urlDataHelpers.getURLs((err, urls) => {
       if (err) {
@@ -18,18 +18,20 @@ module.exports = (urlDataHelpers) => {
 
   // ADD A NEW URL
   router.post('/', (req, res) => {
-    let newURL     = req.body.newURL
-    newURL.user_id = req.currentUser.id
-    newURL.cat_id  = Number(newURL.cat_id)
-    newURL.overallRating  = Number(newURL.overallRating)
-    urlDataHelpers.saveURL(newURL, (err, id) => {
-      if (err) {
-        return res.status(500).send('Error while connecting to the database.')
-      }
-      else {
-        return res.status(201).send()
-      }
-    })
+    if (req.currentUser.email){
+      let newURL     = req.body.newURL
+      newURL.user_id = req.currentUser.id
+      newURL.cat_id  = Number(newURL.cat_id)
+      newURL.overallRating  = Number(newURL.overallRating)
+      urlDataHelpers.saveURL(newURL, (err, id) => {
+        if (err) {
+          return res.status(500).send('Error while connecting to the database.')
+        }
+        else {
+          return res.status(201).send()
+        }
+      })
+    }
   })
 
   // SHOW ONE SPECIFIC URL

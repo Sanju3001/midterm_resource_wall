@@ -67,7 +67,6 @@ module.exports = (userDataHelpers) => {
         // fix this one later
         return res.send('This email address is already in use by another.')
       }
-      console.log(req.body.email)
       let handle = req.body.email.split('@')[0]
       const avatarUrlPrefix = `https://vanillicon.com/${md5(handle)}`
       let newUser = {
