@@ -38,7 +38,7 @@
           <label for="exampleFormControlSelect1">Category</label>
           <select name="selectvcategory" class="form-control" id="exampleFormControlSelect1">
             <%for (let i = 0; i < categories.length; i++) {%>
-              <option value="<%= categories[1].id%>"><%= categories[i].name%></option>
+              <option value="<%= categories[i].id%>"><%= categories[i].name%></option>
             <%}%>
           </select>
           </div>
