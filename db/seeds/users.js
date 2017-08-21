@@ -49,11 +49,17 @@ exports.seed = function(knex, Promise) {
     .then(function(){
       // then create categories
       return Promise.all([
-        knex('categories').insert({id: 1, name: 'Food'}),
-        knex('categories').insert({id: 2, name: 'Sports'}),
-        knex('categories').insert({id: 3, name: 'Entertainment'}),
-        knex('categories').insert({id: 4, name: 'Art'}),
-        knex('categories').insert({id: 5, name: 'Business'})
+        knex('categories').insert({id: 1, name: 'Chemistry'}),
+        knex('categories').insert({id: 2, name: 'Biology'}),
+        knex('categories').insert({id: 3, name: 'Culinary'}),
+        knex('categories').insert({id: 4, name: 'Engineering'}),
+        knex('categories').insert({id: 5, name: 'Physics'})
+        knex('categories').insert({id: 6, name: 'Art'})
+        knex('categories').insert({id: 7, name: 'English'})
+        knex('categories').insert({id: 8, name: 'Geography'})
+        knex('categories').insert({id: 9, name: 'Music'})
+        knex('categories').insert({id: 10, name: 'Medicine'})
+        knex('categories').insert({id: 11, name: 'Web Dev'})
       ])
     })
 };
