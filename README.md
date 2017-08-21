@@ -32,3 +32,9 @@
 
 ## Screenshots
 
+!["Screenshot of login"](https://github.com/Sanju3001/midterm_resource_wall/blob/master/docs/Login.png)
+!["Screenshot of adding comments"](https://github.com/Sanju3001/midterm_resource_wall/blob/master/docs/Add-Comments.png)
+!["Screenshot of URLs for a user"](https://github.com/Sanju3001/midterm_resource_wall/blob/master/docs/URLs-for-User.png)
+!["Screenshot of a user profile"](https://github.com/Sanju3001/midterm_resource_wall/blob/master/docs/User-Profile.png)
+
+
