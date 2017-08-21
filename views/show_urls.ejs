@@ -14,26 +14,28 @@
 </header>
 <main class="container" id="border">
 <h2 id="title">What everyone's talking about</h2>
-  <div class="row justify-content-center">
 
+<div class="row justify-content-center">
 
+    <%for (let row = 0; row < urls.length; row++){ %>
 
-    <%for (let row = 0; row<urls.length; row++){ %>
 
         <div class="col-md-4">
           <a id="theTitle" href="/urls/<%= urls[row].id %>">
             <header class="head">
             <h5>
-            <p><%= urls[row].Title%></p>
+              <p><%= urls[row].Title%></p>
             </h5>
             </header>
-            <!-- <div class='textbox'>
-               <p><%= urls[row].Desc%></p>
-            </div> -->
-            <div class="newDiv">
+          <section class="preview-container" userid="<%=currentUser.id%>" urlAPI="<%=urls[row].URL%>" >
+          </section>
+
+          <div class='textbox'>
+            <p><%= urls[row].Desc%></p>
             </div>
 
-
+            <div class="newDiv">
+            </div>
 
             <footer>
               <div class="rating">
@@ -45,18 +47,17 @@
                 <%}%>
               </div>
             </footer>
+
+
           </a>
         </div>
 
     <%}%>
 
-    <!-- URLs container. All URLs will be added to this section via link preview -->
-    <section id="urls-container" class="container" userid="<%=currentUser.id%>">
-
-    </section>
 
 
 </div>
+
 
 
 </main>
@@ -67,6 +68,8 @@
       <%- include partials/_footer.ejs%>
     </footer>
 
+    <% include partials/_foot %>
+
   </body>
-  <%- include partials/_foot.ejs%>
+
 </html>
