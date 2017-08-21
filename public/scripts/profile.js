@@ -117,7 +117,7 @@ function renderURLS(jSonResponse) {
 
         url: "http://api.linkpreview.net",
         dataType: 'jsonp',
-        data: {q: url.URL, key: '5997560f6be6493a7f79074954ae858b60ed5be482161'},
+        data: {q: url.URL, key: '5999f0099c5101ef3fd934ccdc49332e769d5fe78898c'},
         success: function (response) {
           //console.log(response);
           // console.log(response)
@@ -133,57 +133,16 @@ function renderURLS(jSonResponse) {
 
 }
 
-// function renderURLS(urls) {
-//   let urlsContainer = $('#urls-container div')
 
-//   urls.forEach(function(url) {
-//     let urlElement = createURLElement(url)
-//     urlsContainer.prepend(urlElement)
-//   })
-
-// }
 
 // Create a URL element (to be added to the DOM by renderURLS)
 function createURLElement(url) {
-  // let $ratingStars = $('<div>').addClass('rating')
-  // for (let i = 0; i < url.overallRating; i++) {
-  //   $ratingStars.append($('<span>').html('<i class="fa fa-star" aria-hidden="true"></i>'))
-  // }
-  // for (let i = 0; i < 5 - url.overallRating; i++) {
-  //   $ratingStars.append($('<span>').html('<i class="fa fa-star-o" aria-hidden="true"></i>'))
-  // }
 
-  // let $url = $('<div>').addClass('col-lg-3')
-  //               .append($('<header>').addClass('head')
-  //                 .append($('<h5>')
-  //                   .append($('<a>').attr('id','theTitle').attr('href',`/urls/${url.id}`).text(url.Title))
-  //                   )
-  //                 )
-  //               .append($('<main>').addClass('textbox')
-  //                   .append($('<p>').text(url.Desc))
-  //                   )
-  //               .append($('<footer>')
-  //                   .append($ratingStars))
-
-  // let $url = $('<a>').attr('href',`/urls/${url.id}`)
-  //     .append($('<div>').addClass('col-lg-3')
-  //       .append($('<header>').addClass('head')
-  //         .append($('<h5>')
-  //           .append($('<a>').attr('class','theTitle').text(url.Title))
-  //           )
-  //         )
-  //       .append($('<main>').addClass('textbox')
-  //           .append($('<p>').text(url.Desc))
-  //           )
-  //       .append($('<footer>')
-  //           .append($ratingStars))
-  //         )
 
 
   let $url = $('<div>').addClass('col-lg-3')
                 .append($('<p>').text(url.Title))
-                //.append($('<p>').text(url.Description))
-                //.append($('<img>').attr('src', `${url.image}`))
+
 
   return $url
 }

@@ -7,6 +7,9 @@ $(document).ready(function() {
   loadComments()
 
 
+  loadURLs()
+
+
   // Add a new listener to new comment form and wait for new comment submission
   $('#newcomment').on('submit', function(event) {
     event.preventDefault()
@@ -99,7 +102,6 @@ function loadLikeCount() {
 function loadComments() {
   let urlid = $('#newcomment').attr('URLid')
   let url   = `/urls/${urlid}/comments`
-  console.log(url)
 
   $('#comments-container').html('')
   $('#comments-container').append($('<div>').addClass('row').addClass('justify-content-center'))
@@ -146,7 +148,83 @@ function createCommentElement(comment) {
 }
 
 
+function loadURLs () {
+  let id  = $('#urls-container').attr('userid')
+  let url = `/users/${id}/urls`
 
+  console.log(url)
+
+  $('#urls-container').html('')
+  $('#urls-container').append($('<div>').addClass('row').addClass('justify-content-center'))
+
+    $.ajax({
+      method: 'GET',
+      url: url,
+    }).then(function(response) {
+      renderURLS(response)
+    })
+
+  }
+
+
+
+// Renders all the URLs in the database and adds them to the DOM (one by one)
+
+function renderURLS(jSonResponse) {
+
+
+
+  let urlsContainer = $('#urls-container div')
+  //let dataURL = `/users/${id}/urls`
+
+    // changing ajax request to use linkpreview
+    jSonResponse.forEach(function(jSonResponse) {
+      let urlElement = createURLElement(jSonResponse)
+      urlsContainer.append(urlElement)
+    });
+
+    jSonResponse.forEach(function(url, index) {
+
+      $.ajax({
+
+        url: "http://api.linkpreview.net",
+        dataType: 'jsonp',
+        data: {q: url.URL, key: '5997560f6be6493a7f79074954ae858b60ed5be482161'},
+        success: function (response) {
+          //console.log(response);
+          // console.log(response)
+          $($('.row .col-lg-3')[index])
+              .append($(`<a href="${response.url}">${response.url}</a>`).addClass('url-rendered'))
+              .append($(`<img src="${response.image}">`).addClass('image-rendered'))
+              .append($('<p>').text(response.description).addClass('description-rendered'))
+              // .append($('<p>').($(loadLikeCount())))
+              // .append($('<div>').append($('<img>').addClass('avatar-img').attr('src',comment.avatar)))
+              // .append($('<div>').addClass('comment-name').append($('<p>').text(comment.name)))
+              // .append($('<div>').addClass('comment-text').text(comment.content))
+              // .append($ratingStars)
+        }
+      });
+
+    });
+
+
+}
+
+
+
+// Create a URL element (to be added to the DOM by renderURLS)
+function createURLElement(url) {
+
+
+  let $url = $('<div>').addClass('col-lg-3')
+                .append($('<p>').text(url.Title))
+                // .append($('<div>').text(url.overallRating).addClass('rating'))
+                //.append($('<div>').text(loadComments()))
+                //.append($('<p>').text(url.Description))
+                //.append($('<img>').attr('src', `${url.image}`))
+
+  return $url
+}
 
 
 

@@ -4,6 +4,7 @@
 <head>
   <title>URLs</title>
   <%- include partials/_head.ejs%>
+   <script type="text/javascript" src="/scripts/show_url.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,11 @@
 <main class="container" id="border">
 <h2 id="title">What everyone's talking about</h2>
   <div class="row justify-content-center">
+
+
+
     <%for (let row = 0; row<urls.length; row++){ %>
+
         <div class="col-md-4">
           <a id="theTitle" href="/urls/<%= urls[row].id %>">
             <header class="head">
@@ -22,9 +27,14 @@
             <p><%= urls[row].Title%></p>
             </h5>
             </header>
-            <div class='textbox'>
+            <!-- <div class='textbox'>
                <p><%= urls[row].Desc%></p>
+            </div> -->
+            <div class="newDiv">
             </div>
+
+
+
             <footer>
               <div class="rating">
                 <% for (let i = 0; i < urls[row].overallRating; i++) {%>
@@ -35,10 +45,20 @@
                 <%}%>
               </div>
             </footer>
-           </a>
+          </a>
         </div>
+
     <%}%>
-  </div>
+
+    <!-- URLs container. All URLs will be added to this section via link preview -->
+    <section id="urls-container" class="container" userid="<%=currentUser.id%>">
+
+    </section>
+
+
+</div>
+
+
 </main>
 
 
